@@ -1,0 +1,61 @@
+main {
+  display: grid;
+  gap: 40px;
+  padding: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 32px;
+}
+.form__title {
+  font-size: 25px;
+  color: #0275d8;
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+.form__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.form__card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #ddd;
+  max-width: 300px;
+  width: 100%;
+}
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card__title {
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 8px;
+}
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.card__description {
+  font-size: 14px;
+}
+.card__id {
+  color: #888;
+  font-size: 12px;
+}
+.card__link {
+  margin-left: 100px;
+  color: #0275d8;
+  padding: 8px;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */
