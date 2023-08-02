@@ -3,8 +3,8 @@
 		<div class="form">
 			<h1 class="form__title">Список товарів</h1>
 			<div class="form__content">
-				{{#with productList}}
-				{{#each cards}}
+				{{#with data.products}}
+				{{#each list}}
 				{{> product-card.hbs}}
 				{{/each}}
 				{{/with}}

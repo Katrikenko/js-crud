@@ -64,6 +64,8 @@ main {
 }
 .form__delete-button {
   background-color: #dc4535;
+  text-decoration: none;
+  text-align: center;
 }
 
 .card__title {

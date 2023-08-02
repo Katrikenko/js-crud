@@ -36,6 +36,16 @@ class Product {
       return false
     }
   }
+  static update = (
+    product,
+    { name, price, description },
+  ) => {
+    if ((name, price, description)) {
+      product.name = name
+      product.price = price
+      product.description = description
+    }
+  }
 
   static deleteById = (id) => {
     const index = this.#list.findIndex(
@@ -100,73 +110,73 @@ router.get('/product-list', function (req, res) {
       },
     },
 
-    productList: {
-      cards: [
-        // {
-        //   title: 'Стильна сукня',
-        //   description:
-        //     'Елегантна сукня з натуральної тканини для особливих випадків',
-        //   id: 1357924680,
-        //   price: 1500,
-        // },
-        // {
-        //   title: 'Спортивні кросівки',
-        //   description:
-        //     'Зручні та стильні кросівки для активного способу життя',
-        //   id: 9876543210,
-        //   price: 1200,
-        // },
-        // {
-        //   title: 'Сонячні окуляри',
-        //   description:
-        //     'Модні окуляри з високоякісними лінзами для захисту очей від сонця',
-        //   id: 2468135790,
-        //   price: 800,
-        // },
-        // {
-        //   title: 'Чоловічий годинник',
-        //   description:
-        //     'Елегантний годинник з механічним механізмом і сталевим браслетом',
-        //   id: 8024679135,
-        //   price: 2500,
-        // },
-        // {
-        //   title: 'Жіночий рюкзак',
-        //   description:
-        //     'Стильний рюкзак з великими відділенями та кишенями',
-        //   id: 3192850467,
-        //   price: 900,
-        // },
-        // {
-        //   title: 'Парасолька',
-        //   description:
-        //     'Компактна парасолька з автоматичним механізмом',
-        //   id: 6749258130,
-        //   price: 350,
-        // },
-        // {
-        //   title: 'Столові прибори',
-        //   description:
-        //     'Набір столових приборів зі сталі виготовлених в класичному стилі',
-        //   id: 5036214789,
-        //   price: 600,
-        // },
-        // {
-        //   title: 'Шкіряний гаманець',
-        //   description:
-        //     'Елегантний гаманець з натуральної шкіри з багатьма відділенями',
-        //   id: 7261943580,
-        //   price: 400,
-        // },
-        // {
-        //   title: 'Фітнес-браслет',
-        //   description:
-        //     "Браслет для відстеження активності та здоров'я",
-        //   id: 1584079263,
-        //   price: 700,
-        // },
-      ],
-    },
+    // productList: {
+    //   cards: [
+    //     // {
+    //     //   title: 'Стильна сукня',
+    //     //   description:
+    //     //     'Елегантна сукня з натуральної тканини для особливих випадків',
+    //     //   id: 1357924680,
+    //     //   price: 1500,
+    //     // },
+    //     // {
+    //     //   title: 'Спортивні кросівки',
+    //     //   description:
+    //     //     'Зручні та стильні кросівки для активного способу життя',
+    //     //   id: 9876543210,
+    //     //   price: 1200,
+    //     // },
+    //     // {
+    //     //   title: 'Сонячні окуляри',
+    //     //   description:
+    //     //     'Модні окуляри з високоякісними лінзами для захисту очей від сонця',
+    //     //   id: 2468135790,
+    //     //   price: 800,
+    //     // },
+    //     // {
+    //     //   title: 'Чоловічий годинник',
+    //     //   description:
+    //     //     'Елегантний годинник з механічним механізмом і сталевим браслетом',
+    //     //   id: 8024679135,
+    //     //   price: 2500,
+    //     // },
+    //     // {
+    //     //   title: 'Жіночий рюкзак',
+    //     //   description:
+    //     //     'Стильний рюкзак з великими відділенями та кишенями',
+    //     //   id: 3192850467,
+    //     //   price: 900,
+    //     // },
+    //     // {
+    //     //   title: 'Парасолька',
+    //     //   description:
+    //     //     'Компактна парасолька з автоматичним механізмом',
+    //     //   id: 6749258130,
+    //     //   price: 350,
+    //     // },
+    //     // {
+    //     //   title: 'Столові прибори',
+    //     //   description:
+    //     //     'Набір столових приборів зі сталі виготовлених в класичному стилі',
+    //     //   id: 5036214789,
+    //     //   price: 600,
+    //     // },
+    //     // {
+    //     //   title: 'Шкіряний гаманець',
+    //     //   description:
+    //     //     'Елегантний гаманець з натуральної шкіри з багатьма відділенями',
+    //     //   id: 7261943580,
+    //     //   price: 400,
+    //     // },
+    //     // {
+    //     //   title: 'Фітнес-браслет',
+    //     //   description:
+    //     //     "Браслет для відстеження активності та здоров'я",
+    //     //   id: 1584079263,
+    //     //   price: 700,
+    //     // },
+    //   ],
+    // },
   })
 })
 
@@ -178,8 +188,6 @@ router.get('/product-edit', function (req, res) {
   console.log(id)
 
   const product = Product.getById(Number(id))
-
-  console.log(product)
 
   console.log(Product.getList())
 
@@ -207,11 +215,16 @@ router.post('/product-edit', function (req, res) {
 
   const product = Product.getById(Number(id))
 
-  if (product) {
+  const updated = Product.updateById(Number(id), {
+    name,
+    price,
+    description,
+  })
+
+  if (product && updated) {
     this.name = name
     this.price = price
     this.description = description
-    // this.id = id
 
     res.render('alert', {
       style: 'alert',
@@ -231,15 +244,28 @@ router.post('/product-edit', function (req, res) {
 
 // ============================================================
 
-router.get('/user-delete', function (req, res) {
+router.get('/product-delete', function (req, res) {
   const { id } = req.query
 
-  Product.deleteById(Number(id))
+  const deleted = Product.deleteById(Number(id))
 
-  res.render('alert', {
-    style: 'alert',
-    info: 'Товар був успішно видаленний',
-  })
+  console.log(Product.getList())
+
+  if (deleted) {
+    res.render('alert', {
+      style: 'alert',
+      data: {
+        info: 'Товар успішно видалено',
+      },
+    })
+  } else {
+    res.render('alert', {
+      style: 'alert',
+      data: {
+        info: 'Товар з таким ID не знайдено',
+      },
+    })
+  }
 })
 
 // ================================================================
