@@ -247,25 +247,14 @@ router.post('/product-edit', function (req, res) {
 router.get('/product-delete', function (req, res) {
   const { id } = req.query
 
-  const deleted = Product.deleteById(Number(id))
+  Product.deleteById(Number(id))
 
-  console.log(Product.getList())
-
-  if (deleted) {
-    res.render('alert', {
-      style: 'alert',
-      data: {
-        info: 'Товар успішно видалено',
-      },
-    })
-  } else {
-    res.render('alert', {
-      style: 'alert',
-      data: {
-        info: 'Товар з таким ID не знайдено',
-      },
-    })
-  }
+  res.render('alert', {
+    style: 'alert',
+    data: {
+      info: 'Товар видалений',
+    },
+  })
 })
 
 // ================================================================
