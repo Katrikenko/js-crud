@@ -1,0 +1,14 @@
+<main>
+	<section>
+		<div class="form">
+			{{> heading title="Мої замовлення"}}
+			<div class="form__content">
+				{{#with data}}
+				{{#each list}}
+				{{>purchase-card bonus=../bonus}}
+				{{/each}}
+				{{/with}}
+			</div>
+		</div>
+	</section>
+</main>

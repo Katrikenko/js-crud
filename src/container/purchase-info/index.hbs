@@ -1,0 +1,43 @@
+<main>
+	<section>
+		<div class="form">
+
+			{{#with data}}
+
+			<form action="/purchase-submit?id={{id}}" method="GET" class="form-card">
+
+				{{> heading title="Ваше замовлення"}}
+
+
+				{{> field-form label="ID" name="id" value=id}}
+
+
+				{{>divider}}
+
+				{{> field-form label="Ім'я" name="firstname" value=firstname}}
+				{{> field-form label="Прізвище" name="lastname" value=lastname}}
+				{{> field-form label="Телефон" name="phone" value=phone}}
+				{{> field-form label="Електронна пошта" name="email" value=email}}
+
+				{{>divider}}
+
+				{{> field-form label="Адреса доставки" name="address"}}
+				{{> field-form label="Назва товару" name="title" value=title}}
+
+				{{>divider}}
+
+				{{> field-form value=totalPrice name="totalPrice" label="Сума до сплати"}}
+				{{> field-form value=productPrice name="productPrice" label="Вартість товарів"}}
+				{{> field-form value=deliveryPrice name="deliveryPrice" label="Вартість доставки"}}
+				{{!-- {{> field-form value=amount name="amount" label="Вартість товарів"}} --}}
+				{{> field-form value=bonus name="bonus" label="Нараховані бонуси:"}}
+
+				<strong class="form-cart__total">Всього: {{totalPrice}} грн ({{bonus}} ₴ бонусів)</strong>
+
+				{{>button text="Змінити дані"}}
+			</form>
+
+			{{/with}}
+		</div>
+	</section>
+</main>
