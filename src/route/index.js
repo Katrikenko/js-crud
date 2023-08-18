@@ -553,9 +553,16 @@ router.get('/purchase-info', function (req, res) {
 router.get('/purchase-edit', function (req, res) {
   const id = Number(req.query.id)
 
-  const purchase = Purchase.getById(Number(id))
+  const purchase = Purchase.getById(id)
 
-  if (purchase) {
+  if (!purchase) {
+    res.render('alert', {
+      style: 'alert',
+      isError: true,
+      title: 'Помилка',
+      info: 'Замовлення з таким ID не знайдено',
+    })
+  } else {
     res.render('purchase-edit', {
       style: 'purchase-edit',
       data: {
@@ -572,38 +579,46 @@ router.get('/purchase-edit', function (req, res) {
 // ===============================================================
 
 router.post('/purchase-edit', function (req, res) {
-  const { id, firstname, lastname, phone, email } = req.body
-
+  const id = Number(req.query.id)
+  let { firstname, lastname, phone, email, delivery } =
+    req.body
   const purchase = Purchase.getById(id)
-
-  const updated = Purchase.updateById(id, {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    phone: req.body.phone,
-    email: req.body.email,
-  })
-
-  if (purchase && updated) {
-    this.firstname = firstname
-    this.lastname = lastname
-    this.phone = phone
-    this.email = email
-
-    res.render('alert', {
-      style: 'alert',
-      data: {
-        message: 'Успішно',
-        info: 'Дані оновлені',
-        link: '/purchase-list',
-      },
+  console.log(purchase)
+  if (purchase) {
+    const newPurchase = Purchase.updateById(id, {
+      firstname,
+      lastname,
+      phone,
+      email,
+      delivery,
     })
+    console.log(newPurchase)
+    if (newPurchase) {
+      res.render('alert', {
+        style: 'alert',
+        data: {
+          link: '/purchase-list',
+          title: 'Успішне виконання дії',
+          info: 'Товар успішно оновлено',
+        },
+      })
+    } else {
+      res.render('alert', {
+        style: 'alert',
+        data: {
+          link: '/purchase-list',
+          title: 'Помилка',
+          info: 'Не вдалося оновити товар',
+        },
+      })
+    }
   } else {
     res.render('alert', {
       style: 'alert',
       data: {
-        message: 'Помилка',
-        info: 'Не вдалося оновити дані',
-        link: `/purchase-edit?id=${id}`,
+        link: '/purchase-list',
+        title: 'Помилка',
+        info: 'Не вдалося оновити товар',
       },
     })
   }
