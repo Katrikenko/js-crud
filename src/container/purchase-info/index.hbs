@@ -4,7 +4,7 @@
 
 			{{#with data}}
 
-			<form action="/purchase-submit?id={{id}}" method="GET" class="form-card">
+			<div class="form-card">
 
 				{{> heading title="Ваше замовлення"}}
 
@@ -21,23 +21,24 @@
 
 				{{>divider}}
 
-				{{> field-form label="Адреса доставки" name="address"}}
-				{{> field-form label="Назва товару" name="title" value=title}}
+				{{!-- {{> field-form label="Адреса доставки" name="address"}} --}}
+				{{> field-form label="Назва товару" name="title" value=product}}
 
 				{{>divider}}
 
 				{{> field-form value=totalPrice name="totalPrice" label="Сума до сплати"}}
 				{{> field-form value=productPrice name="productPrice" label="Вартість товарів"}}
 				{{> field-form value=deliveryPrice name="deliveryPrice" label="Вартість доставки"}}
-				{{!-- {{> field-form value=amount name="amount" label="Вартість товарів"}} --}}
 				{{> field-form value=bonus name="bonus" label="Нараховані бонуси:"}}
 
 				<strong class="form-cart__total">Всього: {{totalPrice}} грн ({{bonus}} ₴ бонусів)</strong>
 
-				{{>button text="Змінити дані"}}
-			</form>
+				<a href='/purchase-edit?id={{id}}'>
+					{{> button text="Змінити дані"}}
+				</a>
+				</в>
 
-			{{/with}}
-		</div>
+				{{/with}}
+			</div>
 	</section>
 </main>

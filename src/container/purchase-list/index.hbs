@@ -3,9 +3,9 @@
 		<div class="form">
 			{{> heading title="Мої замовлення"}}
 			<div class="form__content">
-				{{#with data}}
+				{{#with data.purchases}}
 				{{#each list}}
-				{{>purchase-card bonus=../bonus}}
+				{{>purchase-card}}
 				{{/each}}
 				{{/with}}
 			</div>
