@@ -1,0 +1,36 @@
+@use "../../lib/service.scss" as s;
+
+@use "../../component/heading/style.scss" as heading;
+@use "../../component/divider/style.scss" as divider;
+@use "../../component/field/style.scss" as field;
+@use "../../component/purchase-card/style.scss" as list;
+
+main {
+	display: flex;
+	flex-direction: column;
+	gap: s.space(5);
+	padding: s.space(5);
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	padding: s.space(4);
+	gap: s.space(8);
+
+	&__title {
+		font-size: 25px;
+		color: s.color('primary');
+		font-weight: 500;
+		padding-bottom: s.space(1);
+	}
+	
+	&__content {
+		display: grid;
+		grid-template-rows: repeat(4, 1fr);
+		gap: s.space(3);
+		justify-items: stretch;
+		align-items: center;
+	}
+
+}
