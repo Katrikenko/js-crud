@@ -1,0 +1,30 @@
+<main class="main">
+	{{#with data}}
+	<div class="main__content" style="max-width: 768px;">
+
+		<div class="header">
+			<h1 class="title title--big">My library</h1>
+			<a href="/spotify-search">
+				<img src="/img/svg/white-search_button.svg">
+			</a>
+			<a href="/spotify-choose">
+				<img src="/img/svg/plus_button.svg"></a>
+		</div>
+
+
+
+		<ul class="playlist__big-list">
+			{{#each list}}
+			<li class="">
+				<img src="{{image}}" alt="{{name}}" class="playlist__image">
+				<div class="playlist__content">
+					<strong class="playlist__name" style="padding-top: 12px; font-size: 20px;">{{name}}</strong>
+					<span class="playlist__amount">{{amount}} songs</span>
+				</div>
+			</li>
+			{{/each}}
+		</ul>
+
+	</div>
+	{{/with}}
+</main>
